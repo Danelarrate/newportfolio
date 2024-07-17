@@ -10,8 +10,12 @@ export const SakuraBg = () => {
       canvas.height = window.innerHeight
     }
     const ctx = canvas?.getContext('2d')
+    console.log(canvas?.width)
 
-    const TOTAL = 25
+    const TOTAL = (canvas?.width || 0) < 800 ? 7 : 25
+    const initialSpeedX = (canvas?.width || 0) < 800 ? 0.5 : 1
+    const initialSpeedY = (canvas?.width || 0) < 800 ? 1 : 2
+
     const petalArray: Petal[] = []
 
     const petalImg = new Image()
@@ -70,8 +74,8 @@ export const SakuraBg = () => {
           if (this.y > canvas.height || this.x > canvas.width) {
             this.x = -petalImg.width
             this.y = Math.random() * canvas.height * 2 - canvas.height
-            this.xSpeed = 1 + Math.random() * 2
-            this.ySpeed = 2 + Math.random() * 2
+            this.xSpeed = initialSpeedX + Math.random() * 2
+            this.ySpeed = initialSpeedY + Math.random() * 2
             this.flip = Math.random()
           }
           ctx.globalAlpha = this.opacity
