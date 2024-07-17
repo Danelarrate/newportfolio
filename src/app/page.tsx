@@ -1,95 +1,87 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+'use client'
+import { FaLinkedin } from 'react-icons/fa'
+import styles from './page.module.css'
+import Link from 'next/link'
+import { IoLogoGithub } from 'react-icons/io'
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <div style={{ padding: '2.5rem 1.75rem' }}>
+        <div className={styles.prose}>
+          <h1>Danel Arrate</h1>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
+        <article className={styles.prose}>
+          <p>Hey, I am Danel Arrate, a frontend web developer.</p>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            I{"'"}ve participated in creating NOTIMATION, a platform for editing
+            templates with extensive drag-and-drop functionality.
           </p>
-        </a>
+          <p>
+            I have experience developing apps with{' '}
+            <span className={styles.webTechLabel}>
+              <img
+                src='next.svg'
+                style={{
+                  height: '1rem',
+                  stroke: 'white',
+                  marginBottom: '-0.15rem'
+                }}
+              />
+            </span>
+            ,{' '}
+            <span className={styles.webTechLabel}>
+              <img
+                src='React.webp'
+                style={{ height: '1.25rem', marginBottom: '-0.25rem' }}
+              />{' '}
+              React
+            </span>
+            , and{' '}
+            <span className={styles.webTechLabel}>
+              <img
+                src='vue.png'
+                style={{ height: '1.25rem', marginBottom: '-0.25rem' }}
+              />{' '}
+              Vue3
+            </span>
+            , where I{"'"}ve focused on forms and tables.I
+            {"'"}ve implemented user-friendly interfaces, managed complex
+            validations, and optimized performance for data handling to enhance
+            user interaction.
+          </p>
+          <p>
+            Dreaming of becoming a fullstack developer and exploring 3D
+            animation with three.js is where my passion lies.
+          </p>
+          <p>
+            Outside of programming, I enjoy physical activities and playing
+            video games. Currently, I live in Buenos Aires, Argentina. If you
+            are around, feel free to reach out, we could have some coffee or
+            work together.
+          </p>
+        </article>
+        <hr className={styles.hrClass} />
+        <article className={styles.prose}>
+          <p>Find me on</p>
+          <div className='flex'>
+            <Link
+              href={'https://github.com/Danelarrate'}
+              className='socialLink'
+              target='_blank'
+            >
+              <IoLogoGithub color='#bbb' size={'1.5rem'} /> Github
+            </Link>
+            <Link
+              href={'https://www.linkedin.com/in/danelarrate/'}
+              className='socialLink'
+              target='_blank'
+            >
+              <FaLinkedin color='#bbb' size={'1.5rem'} /> Linkedin
+            </Link>
+          </div>
+          <p>Or mail me at danelarrate@gmail.com</p>
+        </article>
       </div>
     </main>
-  );
+  )
 }
