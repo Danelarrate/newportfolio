@@ -10,7 +10,6 @@ export const SakuraBg = () => {
       canvas.height = window.innerHeight
     }
     const ctx = canvas?.getContext('2d')
-    console.log(canvas?.width)
 
     const TOTAL = (canvas?.width || 0) < 800 ? 7 : 25
     const initialSpeedX = (canvas?.width || 0) < 800 ? 0.5 : 1
