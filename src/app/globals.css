@@ -49,7 +49,7 @@ a {
   display: flex;
   justify-items: center;
   align-items: center;
-  gap: 0.25rem;
+  column-gap: 0.25rem;
   width: fit-content;
   transition: all;
   transition-duration: 200ms;

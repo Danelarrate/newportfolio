@@ -13,8 +13,17 @@ export default function Home() {
         <article className={styles.prose}>
           <p>Hey, I am Danel Arrate, a frontend web developer.</p>
           <p>
-            I{"'"}ve participated in creating NOTIMATION, a platform for editing
-            templates with extensive drag-and-drop functionality.
+            I{"'"}ve participated in the creation of{' '}
+            <Link
+              href='https://www.uitool.com'
+              className='socialLink'
+              style={{ display: 'inline-flex' }}
+              target='_blank'
+            >
+              UiTool
+            </Link>
+            , a platform for editing templates with extensive drag-and-drop
+            functionality.
           </p>
           <p>
             I have experience developing apps with{' '}
