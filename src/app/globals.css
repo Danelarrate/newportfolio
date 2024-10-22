@@ -35,22 +35,23 @@ a {
 
 .branch {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: -550px;
+  top: -200px;
   margin-top: -120px;
   margin-left: -90px;
   opacity: 0.7;
   transform: rotate(220deg);
   z-index: -1;
   user-select: none;
-  animation: windEffectOnBranch 10s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  animation: windEffectOnBranch 30s cubic-bezier(0.42, 0, 0.58, 1) infinite;
   animation-delay: calc(-1s * var(--random-delay));
+  transform-origin: right;
 }
 
 .branch::before {
   content: "";
   position: absolute;
-  --random-delay: calc(random() * 5);
+  --random-delay: calc(random() * 2);
 }
 
 @keyframes windEffectOnBranch {
@@ -58,7 +59,7 @@ a {
     transform: rotate(220deg) translate(0px, 0px);
   }
   20% {
-    transform: rotate(224deg) translate(6px, -2px);
+    transform: rotate(224deg) translate(3px, -2px);
   }
   40% {
     transform: rotate(218deg) translate(-4px, 3px);
