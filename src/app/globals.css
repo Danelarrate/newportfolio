@@ -93,3 +93,232 @@ a {
 ul {
   list-style: none;
 }
+
+
+/* components/ProjectCard.module.css */
+
+.card {
+  position: relative;
+  /* Actúa como ventana: fondo translúcido que deja ver el fondo del contenedor */
+  background-color: rgba(10, 10, 10, 0.22);
+  backdrop-filter: blur(6px) saturate(0.6);
+  -webkit-backdrop-filter: blur(6px) saturate(0.6);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 220ms ease, backdrop-filter 220ms ease, border-color 220ms ease;
+  box-shadow: 0 4px 12px 0 rgba(255,94,108,0.12);
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  height: 100%;
+}
+
+/* --- ESTILO DE LA MARCA DE AGUA (FLOR) --- */
+.watermark {
+  position: absolute;
+  top: -20px;
+  /* Posicionada en la esquina superior derecha */
+  right: -20px;
+  width: 120px;
+  /* Tamaño grande */
+  height: 140px;
+  opacity: 1;
+  /* Sin opacidad: símbolo totalmente visible */
+  filter: grayscale(100%);
+  /* Empieza en blanco y negro */
+  transition: all 0.5s ease-out;
+  z-index: 1;
+  /* Al fondo */
+  pointer-events: none;
+}
+
+.watermark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* --- ESTILO DEL CONTENIDO --- */
+.content {
+  position: relative;
+  z-index: 2;
+  /* El texto va encima de la flor */
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+}
+
+/* Background image for cards (subtle, grayscale) */
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch;
+  justify-items: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Each card shows the background image only inside its window */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/Mount_Hua_Landscape.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  filter: grayscale(100%) contrast(0.95) brightness(0.8) saturate(0.6);
+  transition: opacity 0.45s ease, filter 0.45s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 0.26;
+  filter: grayscale(40%) contrast(1) brightness(0.98) saturate(1);
+}
+
+/* When hovering a card, intensify the window look */
+.card:hover {
+  border-color: #ff5e6c;
+  box-shadow: 0 6px 18px 0 rgba(255,94,108,0.38);
+  backdrop-filter: blur(8px) saturate(1.1) contrast(1.02);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1) contrast(1.02);
+}
+
+/* --- EFECTOS HOVER (LA MAGIA) --- */
+
+.card:hover .watermark {
+  opacity: 1;
+  /* Mantener sin transparencia; recuperar color */
+  filter: grayscale(0%);
+  /* Recupera su color rojo */
+  /* Gira 45 grados y crece un poco */
+  transform: rotate(45deg) scale(1.1);
+}
+
+/* --- TIPOGRAFÍA Y OTROS --- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.links {
+  display: flex;
+  gap: 12px;
+}
+
+.links a {
+  color: #888;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+/* Corner links (bottom-right) — icons positioned directly on the card */
+.corner-links {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 3;
+}
+
+.corner-links a {
+  color: #ddd;
+  font-size: 1.05rem;
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 6px;
+  filter: drop-shadow(0 2px 4px rgba(255,94,108,0.15));
+  transition: background-color 0.15s, color 0.15s, filter 0.15s;
+}
+
+.corner-links a:hover {
+  color: #fff;
+  background: rgba(255,94,108,0.08);
+  filter: drop-shadow(0 3px 8px rgba(255,94,108,0.5));
+}
+
+.links a:hover {
+  color: #ff5e6c;
+  /* Iconos se iluminan con el color de la flor */
+}
+
+.description {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #a1a1aa;
+}
+
+.footer {
+  margin-top: auto;
+  /* Empuja los tags hacia abajo */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  color: #ccc;
+  font-family: monospace;
+}
+
+/* --- LAYOUT: Projects page centered & responsive --- */
+main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Container that holds one or more project cards. Uses a responsive grid. */
+.projects-container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: stretch;
+  justify-items: center;
+  padding: 0 1rem;
+}
+
+/* Make each card fill its grid cell responsively */
+.projects-container .card {
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+}
+
+@media (max-width: 420px) {
+  .projects-container {
+    gap: 1rem;
+  }
+  .card {
+    border-radius: 10px;
+    padding: 0;
+  }
+}
